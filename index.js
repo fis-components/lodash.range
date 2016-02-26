@@ -1,5 +1,5 @@
 /**
- * lodash 3.1.0 (Custom Build) <https://lodash.com/>
+ * lodash 3.1.1 (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
  * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -30,7 +30,7 @@ var reIsOctal = /^0o[0-7]+$/i;
 /** Used to detect unsigned integer values. */
 var reIsUint = /^(?:0|[1-9]\d*)$/;
 
-/** Built-in method references without a dependency on `global`. */
+/** Built-in method references without a dependency on `root`. */
 var freeParseInt = parseInt;
 
 /**
@@ -48,7 +48,7 @@ function isIndex(value, length) {
 }
 
 /** Used for built-in method references. */
-var objectProto = window.Object.prototype;
+var objectProto = Object.prototype;
 
 /**
  * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
@@ -296,8 +296,6 @@ function isLength(value) {
  * // => false
  */
 function isObject(value) {
-  // Avoid a V8 JIT bug in Chrome 19-20.
-  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
   var type = typeof value;
   return !!value && (type == 'object' || type == 'function');
 }
@@ -343,8 +341,7 @@ function toNumber(value) {
  * Creates an array of numbers (positive and/or negative) progressing from
  * `start` up to, but not including, `end`. A step of `-1` is used if a negative
  * `start` is specified without an `end` or `step`. If `end` is not specified
- * it's set to `start` with `start` then set to `0`.  If `end` is less than
- * `start` a zero-length range is created unless a negative `step` is specified.
+ * it's set to `start` with `start` then set to `0`.
  *
  * **Note:** JavaScript follows the IEEE-754 standard for resolving
  * floating-point values which can produce unexpected results.
